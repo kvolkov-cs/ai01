@@ -694,3 +694,586 @@ body {
   background: var(--bg);
   border-color: var(--accent);
 }
+
+/* --- Блок 3: бизнес-модели --- */
+
+/* Карточки моделей */
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.model-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.model-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.model-head h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.model-head .badge {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.model-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.model-examples,
+.model-fit {
+  font-size: 13px;
+  line-height: 1.5;
+  padding-top: 12px;
+  margin-bottom: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.model-fit { margin-bottom: 0; }
+
+.model-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.model-examples p,
+.model-fit p {
+  margin: 0;
+  color: var(--fg);
+}
+
+/* Сценарии */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.scenario {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.scenario-head {
+  margin-bottom: 12px;
+}
+
+.scenario-head h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--accent);
+  letter-spacing: -0.005em;
+}
+
+.scenario-tag {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.scenario-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.scenario-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.scenario-list li {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+.scenario-list li:last-child { padding-bottom: 0; }
+
+.scenario-list strong {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .scenario-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .model-grid { grid-template-columns: 1fr; gap: 16px; }
+  .model-card { padding: 16px; }
+  .scenario { padding: 16px; }
+}
+
+/* --- Блок 4.1: идеи по сегментам --- */
+
+.idea-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  background: var(--bg);
+}
+
+.idea-head {
+  margin-bottom: 20px;
+}
+
+.idea-segment {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+
+.idea-head h3 {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  max-width: 720px;
+}
+
+.idea-tagline {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 720px;
+}
+
+.idea-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.idea-body h4 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.idea-body p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Три мета-ячейки */
+.idea-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.meta-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.idea-meta p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
+/* Итоговый вердикт */
+.idea-verdict {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.idea-verdict .badge {
+  margin-bottom: 0;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.idea-verdict p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Адаптив */
+@media (max-width: 720px) {
+  .idea-card { padding: 18px; }
+  .idea-body { grid-template-columns: 1fr; gap: 16px; }
+  .idea-meta { grid-template-columns: 1fr; gap: 14px; }
+  .idea-head h3 { font-size: 17px; }
+  .idea-verdict { flex-direction: column; gap: 10px; }
+}
+
+/* --- Блок 4.2: аргументы за / против --- */
+
+.arg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.arg-col {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.arg-col h4 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 14px;
+}
+
+.arg-for {
+  background: #e8f5ee;
+  border-color: #c8e3d3;
+}
+.arg-for h4 { color: #1f5c3a; }
+
+.arg-against {
+  background: #fbeee5;
+  border-color: #efd4c2;
+}
+.arg-against h4 { color: #8a3b1a; }
+
+.arg-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.arg-col li {
+  position: relative;
+  padding: 10px 0 10px 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.arg-col li:last-child { border-bottom: none; padding-bottom: 0; }
+.arg-col li:first-child { padding-top: 0; }
+
+.arg-col li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.arg-col li:first-child::before { top: 6px; }
+
+.arg-for li::before { background: #1f5c3a; }
+.arg-against li::before { background: #8a3b1a; }
+
+@media (max-width: 720px) {
+  .arg-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Блок 9: ближайшие шаги --- */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.step {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.step-head {
+  margin-bottom: 14px;
+}
+
+.step-num {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.step-head h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.step ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.step li {
+  margin-bottom: 8px;
+}
+
+.step li:last-child { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Блок 8: роль и интересы --- */
+
+.role-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+}
+
+.role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.role-head h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.role-tag {
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.role-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.role-cell {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.role-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.role-cell ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.role-cell li {
+  margin-bottom: 6px;
+}
+
+.role-cell li:last-child { margin-bottom: 0; }
+
+/* Блок с ссылкой на источник */
+.reference-block {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--muted);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+  margin: 24px 0 32px;
+  background: var(--bg);
+}
+
+.reference-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.reference-block p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+@media (max-width: 720px) {
+  .role-card { padding: 16px 18px; }
+  .role-grid { grid-template-columns: 1fr; }
+  .role-cell { padding: 16px; }
+}
+
+/* --- Блок 7: команда --- */
+
+.team-diagram {
+  margin: 0 0 32px;
+}
+
+.team-level {
+  margin-bottom: 8px;
+}
+
+.team-level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.team-node {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: var(--bg);
+}
+
+.team-node-strategic {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+}
+
+.team-node-ops {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  opacity: 0.9;
+}
+
+.team-role {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.team-hours {
+  display: block;
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.team-node p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
+.team-arrow {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  margin: 6px 0;
+  line-height: 1;
+}
+
+/* Итоговая строка таблицы */
+.catalog-table tr.row-total td {
+  background: var(--surface);
+  border-top: 2px solid var(--accent);
+}
+
+@media (max-width: 720px) {
+  .team-level-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .team-node { padding: 14px; }
+}
