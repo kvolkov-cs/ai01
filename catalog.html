@@ -38,8 +38,13 @@
       const table = document.createElement('table');
       table.className = 'catalog-table';
       table.innerHTML = '<thead><tr>' +
-        '<th>Название</th><th>Сайт</th><th>Назначение</th><th>Стоимость</th>' +
+        '<th>Название</th>' +
+        '<th>Сегмент</th>' +
+        '<th>Сайт</th>' +
+        '<th>Назначение</th>' +
+        '<th>Стоимость</th>' +
         '</tr></thead>';
+
       const tbody = document.createElement('tbody');
       items.forEach(function (item) {
         const tr = document.createElement('tr');
@@ -47,16 +52,24 @@
           ? '<a href="' + item.site + '" target="_blank" rel="noopener">' +
             item.site.replace(/^https?:\/\//, '').replace(/\/$/, '') + '</a>'
           : '<span class="muted">—</span>';
+        const segmentCell = item.segment
+          ? '<span class="tag">' + item.segment + '</span>'
+          : '<span class="muted">—</span>';
+
         tr.innerHTML =
           '<td data-label="Название"><strong>' + item.name + '</strong></td>' +
+          '<td data-label="Сегмент">' + segmentCell + '</td>' +
           '<td data-label="Сайт">' + siteCell + '</td>' +
           '<td data-label="Назначение">' + item.purpose + '</td>' +
           '<td data-label="Стоимость">' + item.price + '</td>';
+
         tbody.appendChild(tr);
       });
+
       table.appendChild(tbody);
       container.appendChild(table);
     }
+
     renderTable('table-large', catalog.large);
     renderTable('table-small', catalog.small);
   </script>
