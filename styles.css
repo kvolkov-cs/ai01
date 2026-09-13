@@ -173,7 +173,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin: 0 0 32px;
+  margin: 20px 0 32px;
   font-size: 14px;
 }
 
@@ -497,3 +497,200 @@ body {
   color: #ffffff;
 }
 
+/* --- Блок 2: сегменты --- */
+
+/* Методика */
+.methodology {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 0 0 40px;
+  background: var(--surface);
+}
+
+.methodology h4 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+}
+
+.methodology-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.methodology-grid p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
+/* Карточка сегмента */
+.segment {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 8px;
+  margin-bottom: 24px;
+}
+
+.segment-head {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.segment-num {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  width: 44px;
+}
+
+.segment-head h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.segment-tagline {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Сетка внутри сегмента */
+.segment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.segment-cell h5 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.segment-cell p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.segment-cell ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.segment-cell li {
+  margin-bottom: 6px;
+}
+
+.segment-cell li:last-child { margin-bottom: 0; }
+
+/* Бейджи */
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.badge-high {
+  color: #8a3b1a;
+  background: #fbeee5;
+}
+
+.badge-mid {
+  color: #8a6a1a;
+  background: #fbf5e5;
+}
+
+.badge-low {
+  color: #1f5c3a;
+  background: #e8f5ee;
+}
+
+/* Вердикт по сегменту */
+.segment-verdict {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+  margin-bottom: 8px;
+}
+
+.verdict-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.segment-verdict p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Адаптив */
+@media (max-width: 720px) {
+  .methodology-grid { grid-template-columns: 1fr; }
+  .segment-grid { grid-template-columns: 1fr; gap: 16px; }
+  .segment-head { gap: 12px; }
+  .segment-num { font-size: 20px; width: 32px; }
+  .segment-head h3 { font-size: 18px; }
+  .segment-verdict { padding: 12px 16px; }
+}
+
+.back-bar {
+  margin: 0 0 24px;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.back-btn:hover {
+  background: var(--bg);
+  border-color: var(--accent);
+}
