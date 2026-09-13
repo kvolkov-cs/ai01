@@ -163,5 +163,30 @@ body {
   .catalog-table th:nth-child(4), .catalog-table td:nth-child(4) { width: 32%; }
   .catalog-table th:nth-child(5), .catalog-table td:nth-child(5) { width: 22%; }
 }
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 32px;
+  font-size: 14px;
+}
 
+.filter-bar label {
+  color: var(--muted);
+}
+
+.filter-bar select {
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.filter-bar select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
 }

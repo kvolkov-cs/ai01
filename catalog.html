@@ -12,7 +12,13 @@
       <h1>Каталог решений и сервисов</h1>
       <p class="lead">Российский рынок ИИ-помощников и смежных сервисов для малого и среднего бизнеса, сентябрь 2026. Обзор подготовлен как часть анализа ниши для запуска продукта в сегменте МСП.</p>
     </header>
-
+<section class="filter-bar">
+  <label for="segment-filter">Сегмент:</label>
+  <select id="segment-filter">
+    <option value="">Все сегменты</option>
+  </select>
+  <span id="filter-count" class="muted"></span>
+</section>
     <section class="block">
       <h2>Крупные вендоры</h2>
       <p class="block-note">Решения enterprise-уровня от крупных экосистем, банков и IT-холдингов. Часто продаются по индивидуальному коммерческому предложению; публичные тарифы есть не у всех.</p>
@@ -32,46 +38,87 @@
   </main>
 
   <script src="data/catalog.js"></script>
-  <script>
-    function renderTable(containerId, items) {
-      const container = document.getElementById(containerId);
-      const table = document.createElement('table');
-      table.className = 'catalog-table';
-      table.innerHTML = '<thead><tr>' +
-        '<th>Название</th>' +
-        '<th>Сегмент</th>' +
-        '<th>Сайт</th>' +
-        '<th>Назначение</th>' +
-        '<th>Стоимость</th>' +
-        '</tr></thead>';
+<script>
+  function renderTable(containerId, items) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
 
-      const tbody = document.createElement('tbody');
-      items.forEach(function (item) {
-        const tr = document.createElement('tr');
-        const siteCell = item.site
-          ? '<a href="' + item.site + '" target="_blank" rel="noopener">' +
-            item.site.replace(/^https?:\/\//, '').replace(/\/$/, '') + '</a>'
-          : '<span class="muted">—</span>';
-        const segmentCell = item.segment
-          ? '<span class="tag">' + item.segment + '</span>'
-          : '<span class="muted">—</span>';
-
-        tr.innerHTML =
-          '<td data-label="Название"><strong>' + item.name + '</strong></td>' +
-          '<td data-label="Сегмент">' + segmentCell + '</td>' +
-          '<td data-label="Сайт">' + siteCell + '</td>' +
-          '<td data-label="Назначение">' + item.purpose + '</td>' +
-          '<td data-label="Стоимость">' + item.price + '</td>';
-
-        tbody.appendChild(tr);
-      });
-
-      table.appendChild(tbody);
-      container.appendChild(table);
+    if (!items.length) {
+      container.innerHTML = '<p class="muted">Нет сервисов в этом сегменте.</p>';
+      return;
     }
 
-    renderTable('table-large', catalog.large);
-    renderTable('table-small', catalog.small);
-  </script>
+    const table = document.createElement('table');
+    table.className = 'catalog-table';
+    table.innerHTML = '<thead><tr>' +
+      '<th>Название</th>' +
+      '<th>Сегмент</th>' +
+      '<th>Сайт</th>' +
+      '<th>Назначение</th>' +
+      '<th>Стоимость</th>' +
+      '</tr></thead>';
+
+    const tbody = document.createElement('tbody');
+    items.forEach(function (item) {
+      const tr = document.createElement('tr');
+      const siteCell = item.site
+        ? '<a href="' + item.site + '" target="_blank" rel="noopener">' +
+          item.site.replace(/^https?:\/\//, '').replace(/\/$/, '') + '</a>'
+        : '<span class="muted">—</span>';
+      const segmentCell = item.segment
+        ? '<span class="tag">' + item.segment + '</span>'
+        : '<span class="muted">—</span>';
+
+      tr.innerHTML =
+        '<td data-label="Название"><strong>' + item.name + '</strong></td>' +
+        '<td data-label="Сегмент">' + segmentCell + '</td>' +
+        '<td data-label="Сайт">' + siteCell + '</td>' +
+        '<td data-label="Назначение">' + item.purpose + '</td>' +
+        '<td data-label="Стоимость">' + item.price + '</td>';
+
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    container.appendChild(table);
+  }
+
+  function applyFilter() {
+    const segment = document.getElementById('segment-filter').value;
+    const match = function (item) {
+      return !segment || item.segment === segment;
+    };
+
+    const large = catalog.large.filter(match);
+    const small = catalog.small.filter(match);
+
+    renderTable('table-large', large);
+    renderTable('table-small', small);
+
+    const total = large.length + small.length;
+    document.getElementById('filter-count').textContent =
+      segment
+        ? 'Найдено: ' + total + ' (' + large.length + ' крупных, ' + small.length + ' стартапов)'
+        : 'Всего: ' + total + ' (' + large.length + ' крупных, ' + small.length + ' стартапов)';
+  }
+
+  function populateFilter() {
+    const select = document.getElementById('segment-filter');
+    const segments = new Set();
+    catalog.large.concat(catalog.small).forEach(function (item) {
+      if (item.segment) segments.add(item.segment);
+    });
+    Array.from(segments).sort().forEach(function (segment) {
+      const option = document.createElement('option');
+      option.value = segment;
+      option.textContent = segment;
+      select.appendChild(option);
+    });
+  }
+
+  populateFilter();
+  document.getElementById('segment-filter').addEventListener('change', applyFilter);
+  applyFilter();
+</script>
 </body>
 </html>
