@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Каталог ИИ-решений — Российский рынок, 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>Каталог решений и сервисов</h1>
+      <p class="lead">Российский рынок ИИ-помощников и смежных сервисов для малого и среднего бизнеса, сентябрь 2026. Обзор подготовлен как часть анализа ниши для запуска продукта в сегменте МСП.</p>
+    </header>
+
+    <section class="block">
+      <h2>Крупные вендоры</h2>
+      <p class="block-note">Решения enterprise-уровня от крупных экосистем, банков и IT-холдингов. Часто продаются по индивидуальному коммерческому предложению; публичные тарифы есть не у всех.</p>
+      <div id="table-large" class="table-wrap"></div>
+    </section>
+
+    <section class="block">
+      <h2>Узконаправленные компании и стартапы</h2>
+      <p class="block-note">Профильные SaaS-сервисы и инструменты, чаще всего доступные по публичным тарифам. Именно в этой категории сосредоточены основные конкуренты и потенциальные партнёры для нового продукта.</p>
+      <div id="table-small" class="table-wrap"></div>
+    </section>
+
+    <footer class="page-footer">
+      <p>Данные актуальны на сентябрь 2026. Цены на рынке ИИ меняются часто — перед принятием решений сверяйтесь с сайтами вендоров.</p>
+      <p><a href="index.html">← На главную</a></p>
+    </footer>
+  </main>
+
+  <script src="data/catalog.js"></script>
+  <script>
+    function renderTable(containerId, items) {
+      const container = document.getElementById(containerId);
+      const table = document.createElement('table');
+      table.className = 'catalog-table';
+      table.innerHTML = '<thead><tr>' +
+        '<th>Название</th><th>Сайт</th><th>Назначение</th><th>Стоимость</th>' +
+        '</tr></thead>';
+      const tbody = document.createElement('tbody');
+      items.forEach(function (item) {
+        const tr = document.createElement('tr');
+        const siteCell = item.site
+          ? '<a href="' + item.site + '" target="_blank" rel="noopener">' +
+            item.site.replace(/^https?:\/\//, '').replace(/\/$/, '') + '</a>'
+          : '<span class="muted">—</span>';
+        tr.innerHTML =
+          '<td data-label="Название"><strong>' + item.name + '</strong></td>' +
+          '<td data-label="Сайт">' + siteCell + '</td>' +
+          '<td data-label="Назначение">' + item.purpose + '</td>' +
+          '<td data-label="Стоимость">' + item.price + '</td>';
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      container.appendChild(table);
+    }
+    renderTable('table-large', catalog.large);
+    renderTable('table-small', catalog.small);
+  </script>
+</body>
+</html>
